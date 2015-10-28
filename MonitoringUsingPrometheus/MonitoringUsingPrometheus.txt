@@ -1,0 +1,46 @@
+Link to slides: https://goo.gl/qTs1BI
+https://twitter.com/prometheusio
+https://www.dropbox.com/s/0l7kxhjqjbabtb0/prometheus%20site-ops%20preso.pdf?dl=0
+
+Ties in with Grafana for visualizing of time series data
+http://grafana.org/
+
+Prometheus is about metrics, not events
+
+multi-dimensional data model -- allows for tagging or labeling of timeseries data
+simple to use -- static binary
+scalable using pull
+powerful query language
+
+Configuring prometheus to monitor itself -- download sample configuration YAML from https://raw.githubusercontent.com/prometheus/prometheus/master/documentation/examples/prometheus.yml
+
+./prometheus -config.file=prometheus.yml -storage.local.path=data
+
+messing around with queries and graphs
+	rate(prometheus_local_storage_ingested_samples_total[1m])
+
+milisecond precision timestamp, stored as 64-bit float
+every combination of labels gives you a new time series, so be careful about not creating too many (millions would be bad)
+
+pulling is not a scalability problem
+data ingestion can be a problem
+
+Now, play with node exporter
+Exports system-specific data and makes it available to prometheus
+./node_exporeter --collectors.enabled=textfile (mac parameter -- app is happier on linux/freebsd currently)
+
+Configure prometheus to scrape node -- edit prometheus.yml and SIGHUP
+
+node_exporter can be configured to expose static machine-level metrics, such as the status of a command that runs on a periodic basis
+	use textfiles
+	can use various system-specific tools to write metrics to text files, and have node_exporter expose them
+
+Service discovery
+	targets can be discovered dynamically via DNS SRV, kubernetes, marathon, etc.a
+
+	mkporwit-mbpro15[~]$ dig +short SRV demo-node.prometheus.io
+	0 0 9100 demo-node.prometheus.io.
+
+Lots of playing with queries -- rates, sums, dimensions
+
+Thoughts: this talk would really be better as a self-study tutorial. Waste of my time

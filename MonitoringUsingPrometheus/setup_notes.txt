@@ -1,0 +1,33 @@
+Below, please find materials or downloads needed in advance of your tutorial:
+
+Familiarize yourself with Prometheus. A good starter is the SoundCloud blog 
+post: https://developers.soundcloud.com/blog/prometheus-monitoring-at-soundcloud
+
+Next, you should look at the Week of Monitoring blog posts by Boxever: 
+http://www.boxever.com/week-of-monitoring-wrapup
+
+Finally, you find comprehensive documentation at Prometheus.io: 
+http://prometheus.io/
+Bring a Linux or Mac laptop. Optionally, have Linux running in a VM on a 
+Mac or on any other platform. Install the most recent binaries for your 
+platform:
+
+The Prometheus server: https://github.com/prometheus/prometheus/releases
+
+The Node Exporter. If you have Linux running in a VM, install the node 
+exporter there (the node exporter works much better on Linux): 
+https://github.com/prometheus/node_exporter/releases
+
+An example application to be instrumented will be offered in Go and Python. 
+If you prefer Python, make sure you have a working Python development 
+environment on your laptop and install the Python client library by running 
+"pip install prometheus_client"
+
+If you prefer Go, make sure you have a working Go1.4.x development on your 
+machine and clone https://github.com/prometheus/client_golang into 
+$GOPATH/src/github.com/prometheus/client_golang.
+
+Make sure the following works: 
+cd $GOPATH/src/github.com/prometheus/client_golang/examples/simple
+go get 
+go build
