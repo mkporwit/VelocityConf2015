@@ -63,6 +63,16 @@ Ready Made Tools
 Testing Infrastructure as Code
 	TestKitchen -- tool for bringing up infra for testing
 	bats -- testing tool for bash -- for programming language curmudgeons
+Examples
+	alphagov github repo -- gov.uk tests for infrastructure
+	redhat-cip github repo -- openstack acceptance tests
+
+Writing tests for infrastructure is easy
+	Security testing is a good starting point
+	tests for http headers, SSL certs, pen tests
+Deciding what to test is still hard
+	Prioritization is part of the problem
+	Also, testing in production is hard because of impact to user-facing site
 
 Thougths:
 Good talk with lots of code examples, great survey of tools available, and a nice refresher on proper testing philosophy. Good github repo (https://github.com/garethr) with code snippets, and projects he's contrinuting to, such as https://github.com/Azure/azure-sdk-for-ruby
