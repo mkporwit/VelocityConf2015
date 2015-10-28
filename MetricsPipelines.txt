@@ -1,0 +1,145 @@
+# MetricsPipelines
+VelocityConf 2015 Amsterdam -- Building Metrics Pipelines tutorial
+
+Samantha Quiniones -- AOL, Visa
+@ieatkillerbees 
+IRC -- ieatkillerbees @ freenode
+http://samanthaquiniones.com
+
+AOL -- use NewRelic (MySQL, PHP, Memcache, Mongo)
+Response times perceptions
+< 100ms -- instantaneous
+< 300ms -- perceptible delay
+< 1000ms-- system working
+< 10000ms- System slow
+> 10000ms- System down
+
+Amazon claims each 100ms delay causes 1% loss in sales
+Google -- 100ms latency causes about 20% loss in searches
+
+A/B testing
+State Monitoring
+Traffic Metrics
+
+Omniture
+NewRelic
+ELK
+AOL Proprietary
+
+Beacon servers pushing POST content into Hadoop cluster
+	minimal filtering
+	Uses RabbitMQ
+		beacon servers	----->	RabbitMQ	--->	1) Cassandra/Hadoop, 
+							|-->	2) RabbitMQ streaming Q
+	pushes into Cassandra
+	Streaming interface
+	About 25MB/sec (each POST about 1.6Kb, 15000 events, about 2TB/day, keep about 1year)
+
+Cassandra system not really real-time -- takes about an hour to ingest and extract
+Streamers are real-time
+
+Building a realtime data pipeline in three easy failures
+	1) Streamer -> statsd -> elasticsearch
+		nanoservices that each look at a fragment of streamer payload, extract that fragment, push it out as statsd
+		Could only do about 300 requests/second, needed 15K/second
+		Would need about 70 of these receivers
+		Problems:
+			Statsd breaks down rich payloads into discrete metrics
+			Anything but in-flight aggregation would need ElasticSearch
+
+	transits -- shrot term, in-memory, volatile
+	terminals -- destinations that store, destroy, or transmit to other terminals
+
+	Looked at Kafka and RabbitMQ
+		Kafka -- message integrity, message order, fault tolerant
+		RabbitMQ -- routing, HA through federation, more relaxed about order and tolerance
+
+	Requirements:
+		Payloads arrive in any order
+		Some data loss is OK
+		Consumers may only want small subsets of data
+		Need to route to multiple datacenters/AWS
+		Broad support for languages -- Kafka didn't have PHP support
+
+	Transit: RabbitMQ
+		Federation
+		Supports complex routing
+		Federates over network boundaries
+		Mature clients for all stacks (Java, node, PHP)
+		Enterprises like products with companies behind them
+
+	2) streamer -> rabbitmq -> elasticsearch
+		Moved away from Observer Pattern
+		Sheer number of events being created caused memory problems
+		rather than tuning in app, let back pressure mechanism regulate input rate
+
+		chain of nodejs transform streams -- enrich record as it passes through
+
+		Message rate was 600/sec, 35+ servers
+		Needed to add code to handle weird edge cases in node
+		micro-optimized code was a pain, was not robust to manage
+
+	Receiving data, editing it, and routing it in the same step violates separation of transit/terminal
+	Receiver is a simple transit, pushes data onto RabbitMQ
+
+	Node? simple, easy to distribute, fast, too many instances needed to manage flow
+	Go?  native concurrency, no one knew it
+	Rust? C++ with modern tooling, no one knew it and no one wanted to learn it
+	Java? not cool
+	C/C++? likes her sanity too much for C
+
+	Wound up picking Java
+
+	3) Streamer -> Receiver -> RabbitMQ -> processor/router -> elasticsearch
+
+		Receiver == StreamReader -- Java line reader, multithreaded, each thread has own connection to RabbitMQ
+			Makes sure that inbout data is valid JSON object
+			each thread has own connection to queue
+
+		2600 messages/sec, only about 10 servers (actually running 12)
+		Almost-free filtering in receiver -- if it isn't JSON, drop it
+		Processor/router selects only messages it wants
+			Everything else is left to someone else, or dropped on the floor
+
+	ElasticSearch as a high-performance NoSQL document store
+		HA, rack/datacenter aware sharding
+		deep, powerful query DSL
+
+		Four nodes, each node has an index and two replicas
+		super-each to work with from Node, PHP
+
+	How to do multivariate testing so that editors could do anything w/o engaging developers?
+		assign visitor to test group via cookie
+		insert test markers
+		look at click-through rate for test markers
+		make easy form for editors to create test markers, assign weights to markers
+		near real-time -- browser to browser in about 5secs
+
+	But is it real-time?
+		How to visualize this data?
+		Statistically samples records
+		Simple D3 visualizations
+
+		Great for editors and content creators
+
+	But what about developers?
+		Live profiling
+		Use AOL's custom twig-based language (CodeBlocks)
+		Codes locally that is synced into sandbox that has test data
+		Promotes sandboxes to live production
+
+	Cross-platform eventing
+		Dispatch "native" events on one stack and view them in another
+		Symfony EventDispatcher to trigger an event in Node
+		Distributed event handling w/o PHP workers
+		Event-driven indexing -- no crons
+
+		If an event is forwardable, it is put on an AMQP exchange, which is federated with other data centers
+			EventDispatcher picks up event and triggers ElasticSearch indexing
+			Does about 10000 document indexes/day
+
+	Next steps:
+		Better embeddable visualizations -- write their own D3
+		On-demand stream filters with Redis time-series bucketing
+		Move everything to AWS (couple of Petabytes of data)
+		Integrate Apache Spark for real-time statistics -- tie it into Hadoop database, to reduce load on ElasticSearch
