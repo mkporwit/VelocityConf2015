@@ -1,0 +1,68 @@
+Gareth Rushgrove
+Puppet Labs
+http://velocityconf.com/devops-web-performance-eu-2015/public/schedule/detail/45385
+https://github.com/garethr
+
+DevOps weekly newsletter
+
+If infrastructure is code, then we're programming like the 80s
+	replace meetings with testable code
+	replace occasionally accessed spreadsheets with running programs
+	replace architecture diagrams with constant measurement of reality
+
+SecurityHeaders.com
+
+https://gist.github.com/garethr/9c4f4c87910e33cff4d1
+Simple example of turning infrastructure recommendations into a blackbox test suite
+
+White-box testing
+Testing internals -- basic_test.go
+Make tests reusable -- don't repeat yourself too much
+	allows for capturing of domain expertise
+	nmap example -- get nmap expert to craft test, then don't need namp expert to be able to make sure that all ports are always correct
+
+Get in the habit of writing tests. That means that later you always have a place to add new tests, you have a process for revision control, etc.
+
+Make sharable test suitest that can take arguments
+Take advantage of APIs
+	APIs provide good interface for black box tests
+
+For small infrastructure, ssh into machines and run tests
+For large infrastructure, run against a config management database of hosts and states
+	(expect latest-on-all-clients? "openssh")
+	(expect running-on-all-clients? "selinux") -- stop peopel from turning off SELinux
+
+KNOW that some rule or policy is implemented, don't guess, don't go and check if asked.
+ENFORCE the rules through tests
+
+Can you encode the intention behind a rule or test into the tests, so that rules don't appear arbitrary?
+	Absolutely. Use unit test frameworks, not basic shell scripts
+	RSpec, or Cucumber, for example
+	Can become a replacement for the actual policy document, not just an implementation thereof
+
+Ready Made Tools
+	Serverspec -- buit on top of RSpec
+	Works with SSH, WinRM, Docker exec, whatever
+	CFEngine, Puppet, Ansible, Itamae, whatever
+
+	Infratester -- provides helpers for infrastructure black box testing
+	infratester.net
+
+	Servpeek -- allows shippable binaries with assertions
+		Would disallow editing of rules by end users
+		KNOW that no one tampered with your tests
+
+	Testinfra -- python tool, similar and inspired by Serverspec
+
+	BDD Security -- cucumber-based tools for security features of systems
+		example of model where you take a tool, take a domain expert, combine, and get reusable test suite
+		As with most security testing tools, these are effectively hacking tools, so probably should not be run against production...
+
+	Gauntlet -- another cucumber-based tool
+
+Testing Infrastructure as Code
+	TestKitchen -- tool for bringing up infra for testing
+	bats -- testing tool for bash -- for programming language curmudgeons
+
+Thougths:
+Good talk with lots of code examples, great survey of tools available, and a nice refresher on proper testing philosophy. Good github repo (https://github.com/garethr) with code snippets, and projects he's contrinuting to, such as https://github.com/Azure/azure-sdk-for-ruby
