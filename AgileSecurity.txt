@@ -1,0 +1,60 @@
+Agile Security: An introduction for developers
+
+Michael Brunton-Spall
+Technical Architect, Government Digital Service
+@bruntonspall
+http://velocityconf.com/devops-web-performance-eu-2015/public/schedule/detail/45150
+
+Why bother?
+	Security (especially government security) is a byword for slow, lumbering efforts
+	Lots of places never get a security person
+	Threats:
+		Data loss
+		Criminal activity
+		Advanced persistent threats
+
+		Lots of scare-mongering about how the threat landscape has evolved over time
+			largely lost data/info to external attacks these days
+			Malware money-siphoning attacks
+			Fascinating APT like FIN4 and Codoso Team
+				watering hole attack -- attacking an intermediate target to gain access to the ultimate one
+	Accreditation, Certification, and Approval to operate
+		may be used to actually downgrade system security, because it is not part of the standard checklist. Sigh.
+		CAB process horror stories. Not because process is bad, but because it is poorly implemented?
+			Treat the change request as a git pull request with dev code review -- make it more agile
+
+Why Agile?
+	Do this process faster, more often, which makes it faster.
+	But that is a security nightmare, as security people want to gate and control access
+	Principles over rules:
+		Accept that there will always be uncertainty
+		Make everyone part of your deliver team
+		Ensure the business understands the risks it is taking
+		Trust competent people to make decisions
+		Security is part of every technology decision
+		User experience should be fantastic -- secuirty should be good enough
+		Demonstrate why you made the decisions -- and no more
+		Understand that decisions affect each other
+	Automated Penetration Testing
+		BDD-Security by @stephendv
+			based on jbehave, selenium, OWASP-ZAP, Nessus
+			set of prewritten baseline security tests
+		Interesting bdd-security walkthrough
+			Based on https://github.com/bruntonspall/security-workshop
+
+	Component security doesn't matter if there are fundamental exploits in the business process
+		Most information disclosure risks are business processes
+			commonly, customer support line, or password reset process
+		Microservices approach
+			Allows for easy intercept of traffic between services, opens up all sorts of potential attacks
+				Use Kerberos, or other token-based secuirty mechanism would be a way to mitigate this
+
+	Misuse cases
+		Use cases from the point of an attacker
+		Allows security team to express security as business cases
+
+	Talk about security risks at the user story level -- make infromed risk tradeoffs
+
+	We have a duty of care when developing software
+
+Thoughts: entertaining, useful, if slightly high-level talk. Some nice insights into BDD-Security, misuse cases, security at the user story level
