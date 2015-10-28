@@ -73,6 +73,9 @@ Writing tests for infrastructure is easy
 Deciding what to test is still hard
 	Prioritization is part of the problem
 	Also, testing in production is hard because of impact to user-facing site
+Retroactively adding tests is really difficult
+	Start out by adding tests for the next thing you work on
+Sharing tests will help everyone learn (including you)
 
 Thougths:
 Good talk with lots of code examples, great survey of tools available, and a nice refresher on proper testing philosophy. Good github repo (https://github.com/garethr) with code snippets, and projects he's contrinuting to, such as https://github.com/Azure/azure-sdk-for-ruby
