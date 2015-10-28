@@ -1,5 +1,6 @@
 # MetricsPipelines
 VelocityConf 2015 Amsterdam -- Building Metrics Pipelines tutorial
+http://velocityconf.com/devops-web-performance-eu-2015/public/schedule/detail/45820
 
 Samantha Quiniones -- AOL, Visa
 @ieatkillerbees 
@@ -143,3 +144,7 @@ Building a realtime data pipeline in three easy failures
 		On-demand stream filters with Redis time-series bucketing
 		Move everything to AWS (couple of Petabytes of data)
 		Integrate Apache Spark for real-time statistics -- tie it into Hadoop database, to reduce load on ElasticSearch
+
+
+Thoughts:
+Interesting scenario, but had hoped this would be more of a tutorial. Still, nice to be taken through the evolution of the product
