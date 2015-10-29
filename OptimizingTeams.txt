@@ -1,0 +1,114 @@
+Mike Amundsen
+CA Technologies
+@mamund
+
+Optimizing Teams in a distributed world
+
+There is no button to "Do Agile", "Lead Teams", or whatever else
+Organizational metrics can predict software failure-proneness with 80% effectiveness
+Microservices allow organizations to align the architecture of their systems to the structure of their teams (or actually, the other way around)
+
+"How do committees invent?" (1967)
+	Project-based organizations
+	Conway's law -- system design reflects the organization's communication structure
+		Therefore: communication dictates design
+		Brooks' law -- adding people to a late project makes it later
+			Due to communication interactions -- n(n-1)/2 interactions for n people
+		Dunbar's number
+			5 intimate friends, 15 trusted friends, 35 close friends, 150 casual acquainances, etc...
+		Team size is important -- make teams as small as necessary
+			(Scaling Spotify paper -- look it up later)
+		Guidance -- team size somewhere between 5 and 15
+
+		"Team size is important"
+
+Doing it over
+	Conway's second law
+		"There is never enough time to do it right, but there is always enough time to do it over"
+		Efficiency/thoroughness tradeoffs (ETTO Principle)
+			Satisficing vs Sacrificing
+			Satisficing -- problem too complicated? Ignore details...
+			Sacrificing -- not enough resources? Give up features...
+			These are normal and result in success more often than result in failure
+
+		Safety-1 vs Safety-2 (resilience)
+			Add things to system to make it resilient, rather than remove things that can break it
+
+		Increasing intractability
+			Systems grow too large
+			rate of change increases
+			epectations keep rising
+
+		Continuous Delivery is meant to keep intractability at bay
+			If it hurts, do it more often
+	
+		"Problem size is important"
+
+Homomorphism
+	Conway's third law
+	"homomorphism insures that the structure of the system will reflect the disintegration which has occurred in the design organization."
+
+	"If you have four groups working on a compiler, you'll get a four-pass compiler" -- ESR
+
+	Independent teams
+		If you have to hold a release to wait for another team, you are not independent
+		(coordination in large-scale software teams, Begel et al 2007)
+
+Disintegtration
+	Conway's fourth law
+	The structure of large systems tend to disintegrate during development more than small systems
+	"The bigger they are, the harder they fall"
+
+	"Application of the conventional wisdom of management to a large design organization causes its communication structure to disintegrate"
+		Spend more time managing the disaster rather than solving it
+			meetings rather than doing
+
+	Time is against large teams
+		make sure release cycles are short and small
+		Max release cycle should be two weeks, according to Mike
+			Release daily, even if there is nothing to release, just to get in the habit
+
+How to cope
+	Actively manage communication
+		(tactics for global software development, Herbsleb 2008)
+		drives down complexity and drives up quality
+			Slack
+			Video Conferencing
+			online forums, wikis
+		reduce the effort required to locate and interact with the 'right people'
+
+	Never enough time to do it right is not a bug, it is a feature
+		Continous delivery
+		Implement small changes
+		Test immediately
+		Deploy constantly
+		Shorten feedback loop
+
+	Organize teams in ordered to achieve a desired system
+		Need 4 components? Have 4 teams...
+		Organized around business capabilities
+		Products, not projects
+
+		Combine design, develop, test & deploy
+		include storage, business process & UI
+		allow teams autonomy WITHIN their boundary
+		require teams to interoperate NOT integrate
+		make sure teams own their complete life cycle
+
+	Keep your teams as small as necessary, but no smaller
+		2PT
+		Resist the urde to grow teams in response to deadlines
+		Consider Dunbar groups when sizing teams
+		Be OK with breaking into smaller teams
+		Better to be too small than too big
+			Sacrificing is better than Satisficing
+
+Increase communications
+support continuous process
+organize teams by product
+make teams as small as necessary
+
+http://g.mamund.com/2015-10-velocity-teams
+
+
+Thoughts: This one just hurt to listen to... lots of things that resonate here.
