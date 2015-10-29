@@ -1,0 +1,80 @@
+Lindsay Holmwood
+@auxesis
+
+Blame. Language. Learning. Tips for learning from incidents in your org
+
+Failure
+	leads to 1) Blame, and 2) Inquiry
+	Traditional narrative of blame tends to lead to worse perceptions than reality
+	Focused on root cause analysis
+
+	New thinking -- People in (as part of) systems
+	embrace fundamental complexity
+	look up and out, not down and in
+
+Learning Organizations
+	high quality feedback from the front lines
+	less defending of decisions
+
+3 factors that inhibit learning
+	1) blame
+	2) language
+	3) sharing (or lack thereof)
+
+Language hacks to minimize blame
+	what > how > why > who
+	words as framing devices
+
+	why -- fundamentally about justifying actions
+		attribution and apportioning of blame
+		triggers counterfactuals -- exploring alternate histories that never happened
+
+	we jusdge our actions by the context we are in, but judge others by their personality
+
+	how -- distances people from actions
+		good for clarifying technical details
+		can limit scope of inquiry
+
+	what -- uncovering reasoning
+		builds empathy with people in your system
+		encourages explaining in terms of foresight
+
+	assume everyone did the best they could with the information/abilities/etc at the time
+
+	foresight vs hindsight
+		hindsight gives distorted view
+
+	Blame -- responsible for failure, neglectful, derelict
+		fosters notion of bad apples, malicious actors
+
+		things go right more often than they go wrong
+		"What made the course of action the right one?"
+
+Cognitive Biases
+	mental shortcut -- brain optimizes for timeliness over accuracy
+	probnlem solving -> heuristic -> 1) correct result == rational choice
+					 2) incorrect result == cognitive bias
+
+	confirmation bias -- constantly seeking information that reinforces our view of the world
+		ignores alternate explanations
+		countered by:
+			taking opposing viewpoints -- appoint someone to do so, for example
+			if your conclusion is negative -- be wary of confirmation bias
+
+	hindsight bias -- memory distortion to form a judgement
+		knowing the outcome, rewrite history to make it fit the outcome
+		talking about events with the knowledge of the outcome, not knowledge available at the time
+		hindsight bias is the cultural killer -- relentlessly eliminate it
+
+		countered by:
+			"we're about to launch. what do you think will be about to break?"
+			launch
+			"now that we've launched, what has just broken?"
+
+			explain in terms of foresight
+
+Sharing
+	safe environments -- be the shit umbrella you want to see in the world
+	Retrospective Prime Directive
+	Navigate gap between "Work as imagined" vs "Work as done"
+		often significant chasm
