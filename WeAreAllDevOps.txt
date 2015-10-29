@@ -1,0 +1,81 @@
+Katherine Daniels
+@beerops
+
+We are all Devops
+
+Everyone cares about operations
+
+Operational Thinking
+	What does it mean to have something in production?
+		it is being monitored
+		someone is responsible for it
+		it is being maintained
+		it is getting real live traffic
+	If it moves, graph it
+		Can't impact what you don't measure
+			using jawbone to track sleep of on-call to see how being on-call affects sleep
+	Ownership
+		not just shipping
+		Availability
+		monitoring and alerting
+		performance
+	Clear, documented procedures
+		architecture reviews
+			what problem is being solved
+			cost/benefit of design
+			how design maps to goals
+		operability reviews
+			how has it been tested
+			how will it be launched
+			how will it be monitored and maintained
+			when is it "done"?
+
+	Doesnt matter how shiny your site is if it is down. It doesn't matter how good your uptime is if your site doesn't solve customers' problems
+
+Helping other people care
+	Show them the State of Devops Report
+	Let them get to know their ops people
+	Have them read "Effective Devops" (plugging her own upcoming book)
+
+Embracing your inner Devop
+	What does "We're all in charge of devops" mean?
+		communicating
+		empathizing
+	Do Bootcamps for new hires
+		make meaningful contributions
+		deep understanding of other teams
+		meet new people
+		increased empathy
+	Designated Ops
+		each team has an ops contact
+		designated, not dedicated
+			those ops have other work
+		help teams get up to speed on best practices
+		attend team meetings
+			identify operational concerns early
+			monitor proactively
+			introduce operational thinking to other teams
+		pair programming
+			sharing knowledge both ways
+			github.com/etsy/mixer -- randomized pairing of people for two weeks
+
+Movign beyond Devops
+	More than the intersection of Dev & Ops
+	How do you bring QA into it? How about Security? UX? Marketing? Customer support? etc...
+
+	Jeff Sussna -- Empathy: THe essense of Devops, 2014
+
+	Expanding "Designated X" programs
+	Customer-facing rotations
+	Don't treat non-engineers as second-class citizens
+
+	No more rockstars
+		Focus on soft skills, not just technical ones
+			don't hire assholes
+		teamwork > individual ego
+		technology as a means, not an end
+		fewer rockstars, more orchestras
+
+	Keep learning and iterating
+
+Thoughts: A cheerleading-type summary of devops concepts... nice overview. Moving beyond devops section was good
