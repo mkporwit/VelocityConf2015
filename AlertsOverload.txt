@@ -1,0 +1,65 @@
+Sarah Wells
+@sarahjwells
+
+Alerts Overload: How to adopt a microservices architecture without being overwhelmed with noise
+
+Microservices make monitoring harder
+You have a lot more systems
+
+FT.com - 19K system alerts over 50 days, 380/day. 20K emails overnight when puppet master failed over
+13K alerts from application functionality
+
+Why so many?
+	Cascades -- one service has a problem, all other services that talk to it also fire
+	Network issues
+How to make it better?
+	Quick Starts -- war room approach to attacking the problem
+	Think about monitoring from the start
+	Care about the business functionality, not the service
+		End-to-end that matters
+	Only alert where you need to take action
+	If you just want information, create dashboards or reports
+		got rid of all microservice-specific alerts
+	Make alerts unmissable
+		Dedicated developer support rotation 
+			No pager duty yet, as they don't feel they've sufficiently dialed in the signal/noise ratio
+	Make good alerts
+		Have them provide all necessary information
+	Standard health checks
+	Do synthetic requests in production to catch problems
+
+Use right tools for the job
+	service monitoring (eg Nagios)
+	log aggregation (eg Splunk)
+	Graphing (eg Graphite/Grafana)
+	real-time error analysis (eg Sentry)
+	Make custom tools
+		github.com/muce/SAWS (neat LED tape tool)
+		Dashing (dashboard tool based on Sinatra)
+		nagios-chart
+
+Right communication channel
+	NOT email
+	Slack integration -- ONLY do this if you have identified the alerts that actually matter
+		use reactions in Slack
+	Radiators everywhere
+
+Cultivate your alerts
+	review the alerts you get
+		if it is not helpful, remove it
+		see if you can improve it
+			add business impact and technical impact sections
+			use run books
+	when you didn't get an alert
+		set up proper alert
+	System boundaries are difficult
+	Make sure you would know if an alert stopped working
+		Add unit tests for alerts
+		deliberately break things (chaos monkey, simian army)
+		monitor your alerting system
+	Keep alerts with the code
+	Allow people to take action
+		if they are going to be woken up by an alert, empower them to make the system more resilient
+
+	blog: http://engineroom.ft.com
+	github.com/{Financial-Times|ftlabs}
