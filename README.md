@@ -14,3 +14,4 @@ Notes and code from the VelocityConf 2015 session in Amsterdam
 
 ### October 30 Sessions
 * [Autonomy at bol.com is like putting a man on the moon: A small step for a team, a giant leap for the company](http://velocityconf.com/devops-web-performance-eu-2015/public/schedule/detail/43966)
+* [Managing secrets at scale](http://velocityconf.com/devops-web-performance-eu-2015/public/schedule/detail/44256)
