@@ -1,0 +1,28 @@
+Bridget Kromhout
+Pivotal
+podcast: Arrested DevOps
+organizes: devopsdays
+
+Beyond Ad-hoc Automation: Leveraging Structured Platforms
+
+Docker in Production Reality, Not Hype
+	After you docker all the docker, that's still not enough
+	needs fabric
+		artisanally crafted bash scripts, chef, whatever
+
+Containerized builds
+	runs tests
+	creates versioned, deployable artifacts
+	standardizes development environment
+
+concourse.ci -- open-source CICD tool from Pivotal for complex, multi-stage pipelines
+
+90% of tech is tribalism and fashion
+	use things that there is community support for, so some of that is probably good
+
+Just because you can, doesn't mean you should
+	make sure you use the right tool for the job
+
+broken gets fixed, but shitty lives forever
+
+Thoughts: great speaker, funny, informative ,but very high-level talk
