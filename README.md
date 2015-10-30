@@ -17,3 +17,7 @@ Notes and code from the VelocityConf 2015 session in Amsterdam
 * [Managing secrets at scale](http://velocityconf.com/devops-web-performance-eu-2015/public/schedule/detail/44256)
 * [Beyond ad-hoc automation: Leveraging structured platforms](http://velocityconf.com/devops-web-performance-eu-2015/public/schedule/detail/45238)
 * [Using Docker safely](http://velocityconf.com/devops-web-performance-eu-2015/public/schedule/detail/44670)
+* [Building and managing microservice-based architectures with Docker and Kubernetes](http://velocityconf.com/devops-web-performance-eu-2015/public/schedule/detail/44568)
+
+### Link to slides
+* [All slides made available by speakers](http://velocityconf.com/devops-web-performance-eu-2015/public/schedule/proceedings)

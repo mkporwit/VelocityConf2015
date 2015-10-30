@@ -1,0 +1,60 @@
+Mandy Waite
+Google
+@tekgrrl
+
+Building and managing microservice-based architectures with Docker and Kubernetes
+
+"Kubernetes up and running" Kelsey Hightower (early release)
+
+"Write programs that do one thing, and do it well. Write programs that work together" -- unix philosophy
+
+Tutorial on docker basics
+	(kind of surprising at how little hands-on experience there still is, at least here, in docker)
+	...
+
+Everything at Google runs in containers
+	even Google Cloud Platform VMs run in containers
+	launch over 2 billion containers/week
+	Kubernetes is Borg 2.0 (Google's internal scheduler)
+
+Unit of scheduling is not a container, but a pod
+	application-specific logical host
+	hosts containers and volumes
+	each pod has its own routable ip
+	ephemeral -- don't store state in the pod
+
+Group multiple containers & shared volumes
+Containers within a pod are tightly coupled
+Shared namespaces
+	share IP, port, and IPC namespaces
+	talk to each other through localhost
+
+Pods can reach one another w/o NAT
+No brokering of Port Numbers
+Need flannel or weave or something like that to span networks
+
+Labels -- grouping mechanismA
+No auto-scaling today -- scheduled for 1.2, available soon
+
+Services -- logical grouping of pods that perform the same function
+	grouped by label selector
+	get stable virtual IP and port, and DNS name
+	load-balances incoming requests across constituent pods
+
+
+Kubernetes tutorial for front-end service (Node.js hello world)
+	(creates replication controller)
+	(creates service)A
+	(scales front-end service with replicas)
+
+Now, create back-end service (ProtoBuf, grpc, and Node)
+	(docker build, tag, push)
+	(backend replication controller)
+	(rolling update demo using versions of replication controller to swap out frontend service with backend service -- easy A/B testing)
+		allows for rolling back of rolling updates if something goes wrong
+
+
+Support for secrets
+	decouples secrets from code
+	tmpfs-backed secret store
+	mounted as volume in pod
