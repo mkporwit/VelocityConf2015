@@ -56,6 +56,11 @@ Tips and Techniques
 			Docker content trust -- check provenance of images
 				not turned on by defailt, so turn them on
 			Pull by digest
+		SELinux
+			policy-based security
+			PITA
+		AppArmor
+			a bit less of a PITA
 Sharing Secrets
 	Environment variables
 		docker run -e API_TOKEN=MY_SECRET image -- suggested by 12factor apps
@@ -68,6 +73,7 @@ Sharing Secrets
 		vault, keywhiz
 		use env variables to pass in one-time auth secrets
 		use volume plugins -- better, but new functionality
+	Kubernetes has some sort of volume-based secret sharing mechanism
 
 In general
 	Containers add security -- additional layer of security
