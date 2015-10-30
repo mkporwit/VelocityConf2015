@@ -1,0 +1,59 @@
+Frederike Ubels & William de Ronde
+bol.com
+
+Autonomy at bol.com is like putting a man on the moon: A small step for a team, a giant leap for the company
+
+Largest on-line retailer in Holland
+~1000 employees, opened in 1999
+
+40 scrum teams, 12000 user stories/month, teams vary from 2 to 7 people. Teams have shrunk over time
+120 services and apps, about 170 releases/month
+
+Scalability problems started around 2013
+Lots of dependencies, lots of waiting, bad for motivation
+
+Platform and Automation Principles:
+single version of truth
+no manual actions
+if it isn't high available it's bad
+set boundaries, be conditional
+measure and monitor everything
+manage all environments the same
+only peer-reviewed changes
+
+What was still missing? A shared goal, something beyond devops.
+	the equivalent of puttina a man on the moon
+		clear, visible goal
+
+Spotify Engineering Culture (second refernce to this -- need to look this up)
+
+Pull, not push -- just do it, what are you waiting for?
+Some teams were early starters, many teams were waiting to see how it goes for the early adopters
+
+Antithesis of Autonomy: To be autonomous, you need to be 'autonomized'
+
+Four phase approach:
+	Phase 0: you build it (but you're not the only one)
+		4 weeks sprints, followed by another 3-4 weeks of release/integ :/
+			started to disintegrate, release trains started to be missed
+	Phase 1: you deploy it (and change management processing will delay it)
+		Improved release cycle from 6-8 weeks to 6-8 days
+			rundeck, nagios, thruk
+	Phase 2: you run it (and yes, sometimes you crash)
+		In case of emergency, recovery is your sole priority & everything is permitted
+		Keep an eye on your meters and know what to expect
+		Ship small & ship fast
+		Go live takes as much effort as build -- prepare for it
+	Phase 3 -- you love it (Hell yeah! ... sometimes)
+
+Measurements of every phase -- actually had a board with concentric orbits (phases) and teams on those orbits
+
+Blameless postmortems -- management participates
+	as long as you fix it, learn from it, and share your learnings
+
+After a year, it is starting to get more crowded in the center (inner-most orbit)
+	(mayfly -- bolcom.github.io; fitnesse, docker, mesos, consul, jira)
+
+Freedom within a framwork
+
+Thoughts: nice case study. takeaways would be smaller user stories and earlier integration
