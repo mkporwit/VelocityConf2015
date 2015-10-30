@@ -1,0 +1,75 @@
+Adrian Mouat
+ContainerSolutions
+http://www.adrianmouat.com/
+
+Docker Security
+
+Why Security Matters?
+	If you get it right, nothing happens
+		but a bunch of bad things don't happen
+Container Attack Vectors
+	Kernel attacks
+		Containers share kernel
+			Denial-of-service
+	Container breakouts
+	Poisoned Images
+	Sniffing Secrets
+Security Paradigms
+	Defense in depth -- multiple layers of security
+	Least privilege -- only access data and resources essential to function
+		"least privilege microservices" Nathan McCauley and Diogo Mónica
+Tips and Techniques
+	Use Containers and VMs
+		use vms to segregate groups of containers
+		for multitenancy, ech user's containers in separate vms
+		for different security levels, sensitive containers on separate vms
+	Users are not namespaced
+		"Containers do not contain" -- Dan Walsh
+		root in container is root on host
+			experimental namespaces in docker 1.9 -- coming
+			create a user in your dockerfile
+				change to the user via USER, or so/sudo/gosu
+				RUN groupadd -r user && useradd -r -g user user
+				USER user
+		Set container fs to read only
+		Set volumes to read-only where possible
+		Drop capabilities
+			docker run --cap-drop ALL --cap-add ...
+			not easy to use, since it requires you to know what syscalls your app makes
+		Set cpushares
+			default rating is 1024
+			docker run -d image
+			docker run -d -c 512 image2
+			Also look at completely fair scheduler
+		Set memory limits
+			docker run -m 512m image
+				will get equivalent amt of swap, for a total of 1GB
+		Defang setuid/setgid binaries
+			Applications probably don't need them, so don't run them in production
+			Remove setuid/setgit bits from binaries
+		Turn off inter-container communication
+			only linked containers can communicate from then on, only on exposed ports
+			-icc=false
+		Verify images
+			Only use automated builds, check dockerfile
+			build yourself
+			Docker content trust -- check provenance of images
+				not turned on by defailt, so turn them on
+			Pull by digest
+Sharing Secrets
+	Environment variables
+		docker run -e API_TOKEN=MY_SECRET image -- suggested by 12factor apps
+			can be seen in too many places -- linked containers, inspect
+			can't be deleted
+			get included in reports -- send over environment as part of crash report, for example
+	Mounted volumes or data volume containers
+		docker run -v /secretdir/keyfile
+	Secure key-value store
+		vault, keywhiz
+		use env variables to pass in one-time auth secrets
+		use volume plugins -- better, but new functionality
+
+In general
+	Containers add security -- additional layer of security
+	Use VMs if concerned
+	Apply security paradigms
